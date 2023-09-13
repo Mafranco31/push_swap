@@ -26,6 +26,14 @@ int	printlist(int argc, t_list *list);
 
 void	printnbr(char *nb);
 
+int	triabulle(t_list **lista, t_list **listb);
+
 int	algo(t_list **lista, t_list **listb);
+
+int	optimid(t_list **lista, int len);
+
+int	getnblst(t_list **lst, int num);
+
+int	checklst(t_list **lst);
 
 #endif

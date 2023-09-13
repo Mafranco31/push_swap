@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:32:08 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/11 17:04:56 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:57:05 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_list	*changerevrotate(t_list *list)
 	t_list	*last;
 	int		i;
 
-	if (list == NULL)
+	if (list == NULL || list->next == NULL)
 		return (NULL);
 	seclast = list;
 	i = ft_lstsize(list);
@@ -60,7 +60,7 @@ static t_list	*changerotate(t_list *list)
 	t_list	*temp;
 	t_list	*first;
 
-	if (list == NULL)
+	if (list == NULL || list->next == NULL)
 		return (NULL);
 	temp = ft_lstlast(list);
 	temp->next = list;
