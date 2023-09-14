@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:47:24 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/14 14:21:32 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:57:42 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	getbot(t_list **lista, t_list **listb, int ref, int len)
 		len--;
 	}
 	revrotate(lista, listb, 1, high);
-//	if (low != 3)
+	if (low > 4 || low < 3)
 		push(lista, listb, 1, low);
 	return (low);
 }
@@ -60,22 +60,23 @@ static int	bouclealgo(t_list **lista, t_list **listb, int ref, int len)
 	int	i;
 
 	i = getbot(lista, listb, ref, len);
-	printf("i = %i\n", i);
-	if (i > 2)
+	if (i > 4)
 		bouclealgo(lista, listb, optimid(lista, i), i);
-	//else if (i == 3)
-	//	triabulle(lista, listb);
 	else
 	{
-		if (i == 2)
+		if (i > 2)
+			triabulle1list(lista, listb, 2, i);
+		else if (i == 2)
 			checkswap(lista, listb);
 		rotate(lista, listb, 1, i);
 	}
-	if (len - i > 2)
+	if (len - i > 4)
 		bouclealgo(lista, listb, optimid(lista, len - i), len - i);
 	else
 	{
-		if (len - i == 2)
+		if (len - i > 2)
+			triabulle1list(lista, listb, 1, len - i);
+		else if (len - i == 2)
 			checkswap(lista, listb);
 		rotate(lista, listb, 1, len - i);
 	}

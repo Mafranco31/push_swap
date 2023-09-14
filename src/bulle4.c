@@ -6,13 +6,13 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:13:10 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/14 14:56:10 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:19:38 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static t_nb4	init4(t_list **lista)
+t_nb4	init4(t_list **lista)
 {
 	t_nb4	n;
 	t_tmp4	tmp;
@@ -52,7 +52,7 @@ static int	put1front(t_nb4 n, t_list **lista, t_list **listb)
 	return (0);
 }
 
-static int	testb4(t_nb4 n, t_list **lista, t_list **listb)
+static int	test4(t_nb4 n, t_list **lista, t_list **listb)
 {
 	if (n.l < n.i && n.j < n.k && n.k < n.l)
 	{
@@ -77,7 +77,7 @@ void	bulle4(t_list **lista, t_list **listb)
 	t_nb4	n;
 
 	n = init4(lista);
-	if (testb4(n, lista, listb) == 1)
+	if (test4(n, lista, listb) == 1)
 		return ;
 	put1front(n, lista, listb);
 }

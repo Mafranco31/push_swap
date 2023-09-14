@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:21:29 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/13 12:20:54 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:58:53 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 	}
 	if (checklst(&lista) > 0)
 		algo(&lista, &listb);
-	printlist(ft_lstsize(lista), lista);
+	//printlist(ft_lstsize(lista), lista);
 	freelist(lista);
 	freelist(listb);
 	return (0);

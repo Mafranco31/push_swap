@@ -63,4 +63,12 @@ void	bulle4(t_list **lista, t_list **listb);
 
 void	bulle3(t_list **lista, t_list **listb);
 
+void	triabulle1list(t_list **lista, t_list **listb, int nblst, int len);
+
+t_nb4	init4(t_list **lista);
+
+void	bullelista(t_list **lista, t_list **listb, t_nb4 n, int len);
+
+int	checkbulle(t_list **lista, t_list **listb, int nblst, int len);
+
 #endif
