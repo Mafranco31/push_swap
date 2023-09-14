@@ -6,57 +6,49 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:50:28 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/13 12:17:31 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:54:29 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	suite(t_list **lista, t_list **listb)
+void	bulle3(t_list **lista, t_list **listb)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
-	t_list	*tmp3;
+	t_tmp3	cpy;
 
-	tmp = *listb;
-	tmp2 = tmp->next;
-	tmp3 = tmp2->next;
-	if (tmp2->nb < tmp3->nb)
-	{
-		swap(lista, listb, 2);
-		revrotate(lista, listb, 2, 1);
-	}
-	else
-		rotate(lista, listb, 2, 1);
-	push(lista, listb, 1, 3);
+	cpy.tmp = *lista;
+	cpy.tmp2 = cpy.tmp->next;
+	cpy.tmp3 = cpy.tmp2->next;
+	if (cpy.tmp->nb > cpy.tmp2->nb && cpy.tmp->nb > cpy.tmp3->nb)
+		rotate(lista, listb, 1, 1);
+	else if (cpy.tmp2->nb > cpy.tmp->nb && cpy.tmp2->nb > cpy.tmp3->nb)
+		revrotate(lista, listb, 1, 1);
+	cpy.tmp = *lista;
+	cpy.tmp2 = cpy.tmp->next;
+	cpy.tmp3 = cpy.tmp2->next;
+	if (cpy.tmp->nb > cpy.tmp2->nb)
+		swap(lista, listb, 1);
 }
 
-int	triabulle(t_list **lista, t_list **listb)
+static int	bulle2(t_list **lista, t_list **listb)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
-	t_list	*tmp3;
 
-	tmp = *listb;
+	tmp = *lista;
 	tmp2 = tmp->next;
-	tmp3 = tmp2->next;
-	if (tmp->nb > tmp2->nb && tmp->nb > tmp3->nb)
-	{
-		push(lista, listb, 1, 1);
-		if (tmp2->nb < tmp3->nb)
-			swap(lista, listb, 2);
-		push(lista, listb, 1, 2);
-	}
-	else if ((tmp->nb > tmp2->nb && tmp->nb < tmp3->nb) ||
-		(tmp->nb < tmp2->nb && tmp->nb > tmp3->nb))
-	{
-		if (tmp->nb < tmp2->nb)
-			swap(lista, listb, 2);
-		else
-			revrotate(lista, listb, 2, 1);
-		push(lista, listb, 1, 3);
-	}
-	else
-		suite(lista, listb);
+	if (tmp->nb > tmp2->nb)
+		swap(lista, listb, 1);
+	return (0);
+}
+
+int	triabulle(t_list **lista, t_list **listb, int len)
+{
+	if (len == 2)
+		bulle2(lista, listb);
+	else if (len == 3)
+		bulle3(lista, listb);
+	else if (len == 4)
+		bulle4(lista, listb);
 	return (0);
 }

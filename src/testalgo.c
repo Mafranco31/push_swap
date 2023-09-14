@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:47:24 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/13 12:23:27 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:21:32 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static int	getbot(t_list **lista, t_list **listb, int ref, int len)
 		len--;
 	}
 	revrotate(lista, listb, 1, high);
-	//if (low != 3)
-	push(lista, listb, 1, low);
+//	if (low != 3)
+		push(lista, listb, 1, low);
 	return (low);
 }
 
@@ -73,8 +73,6 @@ static int	bouclealgo(t_list **lista, t_list **listb, int ref, int len)
 	}
 	if (len - i > 2)
 		bouclealgo(lista, listb, optimid(lista, len - i), len - i);
-	//else if (i == 3)
-	//	triabulle(lista, listb);
 	else
 	{
 		if (len - i == 2)
@@ -87,8 +85,15 @@ static int	bouclealgo(t_list **lista, t_list **listb, int ref, int len)
 int	algo(t_list **lista, t_list **listb)
 {
 	int	i;
+	int	len;
 
-	i = optimid(lista, ft_lstsize(*lista));
-	bouclealgo(lista, listb, i, ft_lstsize(*lista));
+	len = ft_lstsize(*lista);
+	if (len < 5)
+		triabulle(lista, listb, len);
+	else
+	{
+		i = optimid(lista, len);
+		bouclealgo(lista, listb, i, ft_lstsize(*lista));
+	}
 	return (0);
 }
