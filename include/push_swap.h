@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:27:51 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/18 11:29:26 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:41:30 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	triabulle1list(t_list **lista, t_list **listb, int nblst, int len);
 
 t_nb4	init4(t_list **lista);
 
-void	bullelista(t_list **lista, t_list **listb, t_nb4 n, int len);
+void	bullelista(t_list **lista, t_list **listb, int len);
 
 int		checkbulle(t_list **lista, t_list **listb, int nblst, int len);
 
@@ -111,6 +111,6 @@ int		tri5(t_list **lista, t_list **listb, int nblst);
 
 t_nb5	init5(t_list **lista);
 
-void	put4front(t_nb4 n, t_list **lista, t_list **listb);
+void	put4front(t_list **lista, t_list **listb);
 
 #endif

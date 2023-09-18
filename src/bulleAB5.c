@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:51:25 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/15 12:50:14 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:42:23 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	put5frontb(t_list **lista, t_list **listb, t_nb5 n)
 {
-	t_nb4	nb4;
-
 	if (n.j > n.k && n.j > n.l && n.j > n.m && n.j > n.i)
 		rotate(lista, listb, 2, 1);
 	else if (n.k > n.j && n.k > n.l && n.k > n.m && n.k > n.i)
@@ -25,8 +23,7 @@ void	put5frontb(t_list **lista, t_list **listb, t_nb5 n)
 	else if (n.m > n.j && n.m > n.k && n.m > n.l && n.m > n.i)
 		revrotate(lista, listb, 2, 1);
 	push(lista, listb, 1, 1);
-	nb4 = init4(listb);
-	put4front(nb4, lista, listb);
+	put4front(lista, listb);
 }
 
 int	tri5(t_list **lista, t_list **listb, int nblst)

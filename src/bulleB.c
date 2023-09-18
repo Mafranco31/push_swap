@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:05:04 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/15 12:49:05 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:43:18 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	bulle3b(t_list **lista, t_list **listb)
 	push(lista, listb, 1, 3);
 }
 
-void	put4front(t_nb4 n, t_list **lista, t_list **listb)
+void	put4front(t_list **lista, t_list **listb)
 {
+	t_nb4	n;
+
+	n = init4(listb);
 	if (n.j > n.i && n.j > n.k && n.j > n.l)
 		rotate(lista, listb, 2, 1);
 	else if (n.k > n.i && n.k > n.j && n.k > n.l)
@@ -42,8 +45,11 @@ void	put4front(t_nb4 n, t_list **lista, t_list **listb)
 	bulle3b(lista, listb);
 }
 
-static int	test4b(t_nb4 n, t_list **lista, t_list **listb)
+static int	test4b(t_list **lista, t_list **listb)
 {
+	t_nb4	n;
+
+	n = init4(listb);
 	if (n.j > n.k && n.k > n.l && n.l > n.i)
 	{
 		rotate(lista, listb, 2, 1);
@@ -80,27 +86,21 @@ int	checkbulle(t_list **lista, t_list **listb, int nblst, int len)
 
 void	triabulle1list(t_list **lista, t_list **listb, int nblst, int len)
 {
-	t_nb4	n;
-
 	if (checkbulle(lista, listb, nblst, len) == 0)
 		return ;
 	if (len == 5 && nblst == 2)
 		tri5(lista, listb, nblst);
-	if (nblst == 1 && len == 4)
-		n = init4(lista);
-	else if (nblst == 2 && len == 4)
-		n = init4(listb);
 	if (nblst == 2 && len == 4)
 	{
-		if (test4b(n, lista, listb) == 1)
+		if (test4b(lista, listb) == 1)
 		{
 			push(lista, listb, 1, 4);
 			return ;
 		}
-		put4front(n, lista, listb);
+		put4front(lista, listb);
 	}
 	else if (nblst == 2 && len == 3)
 		bulle3b(lista, listb);
 	else
-		bullelista(lista, listb, n, len);
+		bullelista(lista, listb, len);
 }

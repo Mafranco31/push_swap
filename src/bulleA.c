@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:59:32 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/18 11:49:30 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:40:52 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,19 @@ static void	tri3a(t_list **lista, t_list **listb)
 		swap(lista, listb, 1);
 }
 
-void	bullelista(t_list **lista, t_list **listb, t_nb4 n, int len)
+void	bullelista(t_list **lista, t_list **listb, int len)
 {
 	t_nb5	nb5;
+	t_nb4	nb4;
 
 	nb5 = init5(lista);
 	if (len == 5)
 		tri5a(lista, listb, nb5, 0);
-	if (len == 4)
-		tri4a(lista, listb, n);
+	nb4 = init4(lista);
+	if (len > 3)
+		tri4a(lista, listb, nb4);
 	tri3a(lista, listb);
-	if (len == 4)
+	if (len > 3)
 		push(lista, listb, 1, 1);
 	if (len == 5)
 		push(lista, listb, 1, 1);
