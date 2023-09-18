@@ -6,7 +6,7 @@
 #    By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 15:03:30 by mafranco          #+#    #+#              #
-#    Updated: 2023/09/15 11:41:39 by mafranco         ###   ########.fr        #
+#    Updated: 2023/09/18 17:03:25 by mafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	make clean -C $(LIBFT_PATH)
+	@make clean -C $(LIBFT_PATH)
 	@echo "$(YELLOW)$(NAME) removed$(RESET)"
 
 re: fclean all
