@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:31:06 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/11 17:05:03 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:58:35 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	checkint(int argc, char **argv)
 		i = 0;
 		j = 0;
 		k = 0;
-		if (argv[argc][i] == '-')
+		if (argv[argc][j] == '-' || argv[argc][j] == '+')
 			j++;
 		while (argv[argc][k + j] == '0')
 			k++;

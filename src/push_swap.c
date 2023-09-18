@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:21:29 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/18 11:49:52 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:58:14 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,41 @@ int	checklsta(t_list **lst)
 	return (0);
 }
 
+static int	testint(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (ft_isdigit(str[i]) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*lista;
 	t_list	*listb;
 
 	listb = NULL;
-	if (argc <= 2)
+	if (argc < 1)
 		return (0);
+	if (argc == 2)
+	{
+		if (testint(argv[1]) == 1)
+			write(2, "Error\n", 6);
+		exit(1);
+	}
 	lista = transformtolist(argc, argv);
 	if (lista == NULL)
 	{
 		write(2, "Error\n", 6);
-		return (0);
+		exit(1);
 	}
 	if (checklsta(&lista) > 0)
 		algo(&lista, &listb);
