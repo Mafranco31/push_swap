@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:31:13 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/12 17:48:14 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:45:32 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ static void	insertlst(t_list **mid, int nb)
 	tmp2 = tmp->next;
 	new = ft_lstnew(nb);
 	if (nb < tmp->nb)
-	{
 		ft_lstadd_front(mid, new);
-	}
 	else
 	{
 		while (tmp2 && (tmp->nb < nb && tmp2->nb < nb))
@@ -45,7 +43,7 @@ static void	insertlst(t_list **mid, int nb)
 int	getnblst(t_list **lst, int num)
 {
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	tmp = *lst;
 	i = 1;
@@ -61,7 +59,7 @@ int	optimid(t_list **lista, int len)
 {
 	t_list	*mid;
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	tmp = *lista;
 	mid = ft_lstnew(tmp->nb);

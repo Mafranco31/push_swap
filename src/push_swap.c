@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:21:29 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/14 17:58:53 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:49:52 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,31 @@ void	freelist(t_list *list)
 	}
 }
 
-int	checklst(t_list **lst)
+int	checklstb(t_list **lst)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
-	int	i;
+	int		i;
+
+	i = 1;
+	tmp = *lst;
+	tmp2 = tmp->next;
+	while (tmp2)
+	{
+		if (tmp->nb < tmp2->nb)
+			return (i);
+		tmp2 = tmp2->next;
+		tmp = tmp->next;
+		i++;
+	}
+	return (0);
+}
+
+int	checklsta(t_list **lst)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+	int		i;
 
 	i = 1;
 	tmp = *lst;
@@ -58,9 +78,8 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (0);
 	}
-	if (checklst(&lista) > 0)
+	if (checklsta(&lista) > 0)
 		algo(&lista, &listb);
-	//printlist(ft_lstsize(lista), lista);
 	freelist(lista);
 	freelist(listb);
 	return (0);

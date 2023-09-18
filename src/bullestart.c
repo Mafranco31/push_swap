@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   triabullevalide.c                                  :+:      :+:    :+:   */
+/*   bullestart.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 16:50:28 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/14 14:54:29 by mafranco         ###   ########.fr       */
+/*   Created: 2023/09/15 11:35:48 by mafranco          #+#    #+#             */
+/*   Updated: 2023/09/15 11:35:55 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ int	triabulle(t_list **lista, t_list **listb, int len)
 		bulle3(lista, listb);
 	else if (len == 4)
 		bulle4(lista, listb);
+	else if (len == 5)
+		bulle5(lista, listb);
 	return (0);
 }

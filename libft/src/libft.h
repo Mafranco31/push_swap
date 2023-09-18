@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:55:46 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/11 16:21:38 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:55:49 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -15,11 +15,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct 		s_list
+typedef struct s_list
 {
-	int		nb;
+	int				nb;
 	struct s_list	*next;
-}			t_list;
+}				t_list;
 
 int		ft_atoi(const char *nptr);
 
@@ -89,18 +89,18 @@ int		ft_tolower(int c);
 
 int		ft_toupper(int c);
 
-t_list *ft_lstnew(int content);
+t_list	*ft_lstnew(int content);
 
-void ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 
-int ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 
-t_list *ft_lstlast(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
 
-void ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
-void ft_lstdelone(t_list *lst, void (*del)(int));
+void	ft_lstdelone(t_list *lst, void (*del)(int));
 
-void ft_lstclear(t_list **lst, void (*del)(int));
+void	ft_lstclear(t_list **lst, void (*del)(int));
 
 #endif

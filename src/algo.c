@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testalgo.c                                         :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:47:24 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/14 17:57:42 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:52:16 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ static void	checkswap(t_list **lista, t_list **listb)
 
 static int	getbot(t_list **lista, t_list **listb, int ref, int len)
 {
-	int	low;
+	int		low;
 	t_list	*tmp;
-	int	high;
+	int		high;
 
-	tmp = *lista;
 	low = 0;
 	high = 0;
 	while (len > 0)
 	{
+		tmp = *lista;
 		if (tmp->nb <= ref)
 		{
 			push(lista, listb, 2, 1);
@@ -46,11 +46,10 @@ static int	getbot(t_list **lista, t_list **listb, int ref, int len)
 			rotate(lista, listb, 1, 1);
 			high++;
 		}
-		tmp = *lista;
 		len--;
 	}
 	revrotate(lista, listb, 1, high);
-	if (low > 4 || low < 3)
+	if (low > 5 || low < 3)
 		push(lista, listb, 1, low);
 	return (low);
 }
@@ -60,7 +59,7 @@ static int	bouclealgo(t_list **lista, t_list **listb, int ref, int len)
 	int	i;
 
 	i = getbot(lista, listb, ref, len);
-	if (i > 4)
+	if (i > 5)
 		bouclealgo(lista, listb, optimid(lista, i), i);
 	else
 	{
@@ -70,7 +69,7 @@ static int	bouclealgo(t_list **lista, t_list **listb, int ref, int len)
 			checkswap(lista, listb);
 		rotate(lista, listb, 1, i);
 	}
-	if (len - i > 4)
+	if (len - i > 5)
 		bouclealgo(lista, listb, optimid(lista, len - i), len - i);
 	else
 	{
@@ -89,7 +88,7 @@ int	algo(t_list **lista, t_list **listb)
 	int	len;
 
 	len = ft_lstsize(*lista);
-	if (len < 5)
+	if (len < 6)
 		triabulle(lista, listb, len);
 	else
 	{
