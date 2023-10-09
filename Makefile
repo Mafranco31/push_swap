@@ -6,7 +6,7 @@
 #    By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 15:03:30 by mafranco          #+#    #+#              #
-#    Updated: 2023/10/05 15:08:06 by mafranco         ###   ########.fr        #
+#    Updated: 2023/10/09 10:34:18 by mafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(NAME):: lib $(OBJ)
 	@echo "$(GREEN)push_swap compiled$(RESET)"
 
 clean:
-	@$(RM) -r $(SRC_DIR)/*.o
+	@$(RM) -r $(SRC_DIR)/*.o $(SRC_DIR)/rules/*.o $(SRC_DIR)/start/*.o
 	@make clean -C $(LIBFT_PATH)
 	@echo "$(YELLOW)objects push_swap deleted$(RESET)"
 
