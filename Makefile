@@ -6,7 +6,7 @@
 #    By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 15:03:30 by mafranco          #+#    #+#              #
-#    Updated: 2023/10/09 10:34:18 by mafranco         ###   ########.fr        #
+#    Updated: 2023/10/09 19:00:52 by mafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,5 @@ fclean: clean
 	@echo "$(YELLOW)$(NAME) removed$(RESET)"
 
 re: fclean all
-	make fclean -C $(LIBFT_PATH)
 
 .PHONY: all clean fclean re
