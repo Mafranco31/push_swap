@@ -6,7 +6,7 @@
 #    By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 15:03:30 by mafranco          #+#    #+#              #
-#    Updated: 2023/09/18 17:03:25 by mafranco         ###   ########.fr        #
+#    Updated: 2023/10/05 15:08:06 by mafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,18 @@ CFLAGS		= -Wall -Werror -Wextra -I.
 RM		= rm -f
 
 LIBFT_PATH = ./libft/
-LIBFT	=	libft.a
-LIBFT_LIB	=	$(addprefix $(LIBFT_PATH), $(LIBFT))
+LIBFT	=	-L./libft -lft
 
 GREEN		= \033[1;32m
 YELLOW		= \033[1;33m
 RESET		= \033[0m
 
 SRC_DIR	=	src
-SRC		= $(wildcard $(SRC_DIR)/*.c)
+SRC		= src/algo.c src/makelist.c src/printlist.c src/push_swap.c \
+		src/rules/error.c src/rules/push.c src/rules/rotate.c \
+		src/rules/swap.c src/start/bullestart.c src/start/bullestart4.c \
+		src/start/bullestart5.c src/getparts.c src/sortinb.c src/sortina.c
 
-OBJ_DIR	=	.obj
 OBJ	=	$(SRC:.c=.o)
 
 %.o:	%.c $(LIB)
@@ -42,23 +43,18 @@ all: $(NAME)
 lib:
 	@make -C $(LIBFT_PATH)
 
-$(NAME):: lib $(OBJ) $(OBJ_DIR)
-	@$(CC) $(SRC) $(CFLAGS) $(LIBFT_LIB) -o $@
-	@mv $(SRC_DIR)/*.o $(OBJ_DIR)
-
-$(NAME)::
+$(NAME):: lib $(OBJ)
+	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT) -o $@
 	@echo "$(GREEN)push_swap compiled$(RESET)"
 
-$(OBJ_DIR):
-	@mkdir -p $@
-
 clean:
-	@$(RM) -r $(OBJ_DIR)
-	@echo "$(YELLOW)program push_swap deleted$(RESET)"
+	@$(RM) -r $(SRC_DIR)/*.o
+	@make clean -C $(LIBFT_PATH)
+	@echo "$(YELLOW)objects push_swap deleted$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@make clean -C $(LIBFT_PATH)
+	@make fclean -C $(LIBFT_PATH)
 	@echo "$(YELLOW)$(NAME) removed$(RESET)"
 
 re: fclean all

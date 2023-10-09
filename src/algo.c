@@ -6,94 +6,62 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:47:24 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/18 11:52:16 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/10/09 10:15:04 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	checkswap(t_list **lista, t_list **listb)
+static int	getsizeparts(int len)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
-
-	tmp = *lista;
-	tmp2 = tmp->next;
-	if (tmp2 == NULL)
-		return ;
-	if (tmp->nb > tmp2->nb)
-		swap(lista, listb, 1);
+	if (len < 12)
+		return (len / 2);
+	if (len < 50)
+		return (len / 4);
+	if (len < 100)
+		return (len / 5);
+	if (len == 100)
+		return (22);
+	if (len < 300)
+		return (len / 6);
+	if (len < 500)
+		return (len / 8);
+	if (len == 500)
+		return (60);
+	return (len / 10);
 }
 
-static int	getbot(t_list **lista, t_list **listb, int ref, int len)
+void	initdatatable(t_table *t, int len)
 {
-	int		low;
-	t_list	*tmp;
-	int		high;
+	int	size;
 
-	low = 0;
-	high = 0;
-	while (len > 0)
+	size = getsizeparts(len);
+	t->len = len;
+	t->size = size;
+	t->parts = 1 + (len / size);
+	if (len % size == 0)
 	{
-		tmp = *lista;
-		if (tmp->nb <= ref)
-		{
-			push(lista, listb, 2, 1);
-			low++;
-		}
-		else
-		{
-			rotate(lista, listb, 1, 1);
-			high++;
-		}
-		len--;
+		t->lastsize = size;
+		t->parts--;
 	}
-	revrotate(lista, listb, 1, high);
-	if (low > 5 || low < 3)
-		push(lista, listb, 1, low);
-	return (low);
-}
-
-static int	bouclealgo(t_list **lista, t_list **listb, int ref, int len)
-{
-	int	i;
-
-	i = getbot(lista, listb, ref, len);
-	if (i > 5)
-		bouclealgo(lista, listb, optimid(lista, i), i);
 	else
-	{
-		if (i > 2)
-			triabulle1list(lista, listb, 2, i);
-		else if (i == 2)
-			checkswap(lista, listb);
-		rotate(lista, listb, 1, i);
-	}
-	if (len - i > 5)
-		bouclealgo(lista, listb, optimid(lista, len - i), len - i);
-	else
-	{
-		if (len - i > 2)
-			triabulle1list(lista, listb, 1, len - i);
-		else if (len - i == 2)
-			checkswap(lista, listb);
-		rotate(lista, listb, 1, len - i);
-	}
-	return (0);
+		t->lastsize = len % size;
+	t->restup = 0;
+	t->restdown = t->lastsize;
 }
 
 int	algo(t_list **lista, t_list **listb)
 {
-	int	i;
-	int	len;
+	int		len;
+	t_table	t;
 
 	len = ft_lstsize(*lista);
 	if (len < 6)
-		triabulle(lista, listb, len);
-	else
-	{
-		i = optimid(lista, len);
-		bouclealgo(lista, listb, i, ft_lstsize(*lista));
-	}
+		return (triabulle(lista, listb, len));
+	t.table = getparts(lista, len);
+	initdatatable(&t, len);
+	sortinb1(&t, lista, listb);
+	sortina1(&t, lista, listb);
+	free(t.table);
 	return (0);
 }

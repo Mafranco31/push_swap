@@ -6,7 +6,7 @@
 #    By: mafranco <mafranco@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/05 17:45:19 by mafranco          #+#    #+#              #
-#    Updated: 2023/09/11 15:51:47 by mafranco         ###   ########.fr        #
+#    Updated: 2023/09/25 12:18:07 by mafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ RM	=	rm -f
 
 CFLAGS	=	-Wall -Wextra -Werror -I.
 
-OBJ_DIR =	.obj
 SRC_DIR =	src
 
 GREEN	= \033[1;32m
@@ -39,16 +38,12 @@ all: $(NAME)
 
 $(NAME):: $(OBJ) $(LIB) $(OBJ_DIR)
 	@ar rcs $(NAME) $(OBJ)
-	@mv $(SRC_DIR)/*.o $(OBJ_DIR)
 
 $(NAME)::
 	@echo "$(GREEN)libft.a compiled$(RESET)"
 
-$(OBJ_DIR):
-	@mkdir -p $@
-
 clean:
-	@$(RM) -r $(OBJ_DIR)
+	@$(RM) -r $(SRC_DIR)/*.o
 	@echo "$(YELLOW)objects of LIBFT removed$(RESET)"
 
 fclean:	clean

@@ -6,7 +6,7 @@
 /*   By: mafranco <mafranco@student.barcelona.>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:27:51 by mafranco          #+#    #+#             */
-/*   Updated: 2023/09/18 11:29:26 by mafranco         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:02:27 by mafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/src/libft.h"
+
+typedef struct s_table
+{
+	int	*table;
+	int	len;
+	int	size;
+	int	lastsize;
+	int	parts;
+	int	restup;
+	int	restdown;
+}		t_table;
 
 typedef struct s_nb5
 {
@@ -112,5 +123,11 @@ int		tri5(t_list **lista, t_list **listb, int nblst);
 t_nb5	init5(t_list **lista);
 
 void	put4front(t_nb4 n, t_list **lista, t_list **listb);
+
+int		*getparts(t_list **lista, int len);
+
+void	sortinb1(t_table *t, t_list **lista, t_list **listb);
+
+void	sortina1(t_table *t, t_list **lista, t_list **listb);
 
 #endif
